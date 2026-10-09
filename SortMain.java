@@ -12,6 +12,42 @@ public class SortMain {
     //        冒泡排序代码写这里
     //      }
 
+    public static void pqQuickSort(int[] arr, int left, int right) {
+        // 递归终止条件：左边界大于等于右边界，区间内只有0或1个元素，无需排序
+        if (left >= right) {
+            return;
+        }
+        // 选取基准元素，取区间最左侧的值
+        int pivot = arr[left];
+        int i = left;
+        int j = right;
+
+        // 左右指针相向遍历，划分区间
+        while (i < j) {
+            // j指针向左寻找小于基准值的元素
+            while (i < j && arr[j] >= pivot) {
+                j--;
+            }
+            // i指针向右寻找大于基准值的元素
+            while (i < j && arr[i] <= pivot) {
+                i++;
+            }
+            // 交换i、j位置的元素
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        // 将基准元素放到正确位置
+        arr[left] = arr[i];
+        arr[i] = pivot;
+
+        // 递归排序基准左侧子区间
+        quickSort(arr, left, i - 1);
+        // 递归排序基准右侧子区间
+        quickSort(arr, i + 1, right);
+    }
+    
+
 
     // ========== 程序入口main函数，统一测试入口 ==========
     public static void main(String[] args) {
