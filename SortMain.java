@@ -11,6 +11,25 @@ public class SortMain {
     // 示例：public static void zsBubbleSort(int[] arr){
     //        冒泡排序代码写这里
     //      }
+    // 冒泡排序
+    // 功能：对数字数组进行升序排序
+    // 参数：arr - 待排序的数字数组
+    // 返回值：无（直接修改原数组）
+    public static void xzyBubbleSort(int[] arr) {
+        int n = arr.length;
+        // 外层循环：控制排序轮数
+        for (int i = 0; i < n - 1; i++) {
+            // 内层循环：控制每轮比较次数
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // 交换相邻元素
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
 
 
     // ========== 程序入口main函数，统一测试入口 ==========
