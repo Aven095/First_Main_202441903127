@@ -8,6 +8,18 @@
  */
 public class SortMain {
     // ========== 【组员在这里写自己的排序方法】==========
+    // 插入排序
+public static void lzkInsertSort(int[] arr) {
+    for (int i = 1; i < arr.length; i++) {
+        int temp = arr[i]; // 待插入元素
+        int j;
+        // 向前找位置，比temp大的元素往后挪
+        for (j = i - 1; j >= 0 && arr[j] > temp; j--) {
+            arr[j + 1] = arr[j];
+        }
+        arr[j + 1] = temp; // 插入到正确位置
+    }
+}
     // 示例：public static void zsBubbleSort(int[] arr){
     //        冒泡排序代码写这里
     //      }
@@ -21,6 +33,9 @@ public class SortMain {
         printArray(testArr);
 
         // ========== 组员在这里调用自己写的排序函数 ==========
+        lzkInsertSort(testArr);
+System.out.print("插入排序后数组: ");
+printArray(testArr);
         // 示例调用：zsBubbleSort(testArr);
 
     }
