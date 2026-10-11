@@ -41,7 +41,9 @@ public class SortMain {
 
         // ========== 组员在这里调用自己写的排序函数 ==========
         // 示例调用：zsBubbleSort(testArr);
-
+        lShellSort(testArr);
+        System.out.print("肖尊毅-冒泡排序算法排序结果: ");
+        printArray(testArr);
     }
 
     // 辅助工具：打印数组，方便看排序结果，所有人共用
