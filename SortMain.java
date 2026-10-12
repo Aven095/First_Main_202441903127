@@ -7,46 +7,50 @@
  * 示例：zs = 张三首字母，BubbleSort代表冒泡排序
  */
 public class SortMain {
-    // ========== 【组员在这里写自己的排序方法】==========
-    // 示例：public static void zsBubbleSort(int[] arr){
-    //        冒泡排序代码写这里
-    //      }
+    /**
+     * 快速排序【对外调用入口方法，main调用这个】
+     * 功能：对int类型数组进行升序快速排序
+     * 参数：arr - 待排序的整数数组
+     */
+    public static void pqQuickSort(int[] arr) {
+        quickSortRecursion(arr, 0, arr.length - 1);
+    }
 
-    public static void pqQuickSort(int[] arr, int left, int right) {
-        // 递归终止条件：左边界大于等于右边界，区间内只有0或1个元素，无需排序
+    /**
+     * 快速排序递归子方法（内部辅助）
+     * @param arr 待排序数组
+     * @param left 左边界下标
+     * @param right 右边界下标
+     */
+    private static void quickSortRecursion(int[] arr, int left, int right) {
+        // 递归终止条件：左边界 >= 右边界，区间只有一个元素或者空，不用排序
         if (left >= right) {
             return;
         }
-        // 选取基准元素，取区间最左侧的值
+        // 选取基准元素
         int pivot = arr[left];
         int i = left;
         int j = right;
 
-        // 左右指针相向遍历，划分区间
         while (i < j) {
-            // j指针向左寻找小于基准值的元素
+            // 从右边往左找，找到比基准小的元素
             while (i < j && arr[j] >= pivot) {
                 j--;
             }
-            // i指针向右寻找大于基准值的元素
+            arr[i] = arr[j];
+            // 从左边往右找，找到比基准大的元素
             while (i < j && arr[i] <= pivot) {
                 i++;
             }
-            // 交换i、j位置的元素
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+            arr[j] = arr[i];
         }
-        // 将基准元素放到正确位置
-        arr[left] = arr[i];
+        // 把基准放到最终正确位置
         arr[i] = pivot;
 
-        // 递归排序基准左侧子区间
-        quickSort(arr, left, i - 1);
-        // 递归排序基准右侧子区间
-        quickSort(arr, i + 1, right);
+        // 递归处理基准左边、右边子区间
+        quickSortRecursion(arr, left, i - 1);
+        quickSortRecursion(arr, i + 1, right);
     }
-    
 
 
     // ========== 程序入口main函数，统一测试入口 ==========
@@ -58,6 +62,9 @@ public class SortMain {
 
         // ========== 组员在这里调用自己写的排序函数 ==========
         // 示例调用：zsBubbleSort(testArr);
+        pqQuickSort(testArr);
+        System.out.print("快速排序后数组: ");
+        printArray(testArr);
 
     }
 
