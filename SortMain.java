@@ -23,7 +23,28 @@ public static void lzkInsertSort(int[] arr) {
     // 示例：public static void zsBubbleSort(int[] arr){
     //        冒泡排序代码写这里
     //      }
-
+        // 希尔排序
+    // 功能：对数字数组进行升序排序
+    // 参数：arr - 待排序的数字数组
+    // 返回值：无（排序结果直接作用于原数组）
+    public static void tlShellSort(int[] arr) {
+        int n = arr.length;
+        // 外层循环：增量gap从数组长度的一半开始，每轮减半，直到1
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            // 中层循环：从gap位置开始，对间隔为gap的子序列执行插入排序
+            for (int i = gap; i < n; i++) {
+                int temp = arr[i];
+                int j = i;
+                // 内层循环：把当前元素移动到子序列中的正确位置
+                while (j - gap >= 0 && arr[j - gap] > temp) {
+                    arr[j] = arr[j - gap];
+                    j -= gap;
+                }
+                // 插入到正确位置
+                arr[j] = temp;
+            }
+        }
+    }
 
     // ========== 程序入口main函数，统一测试入口 ==========
     public static void main(String[] args) {
@@ -37,6 +58,10 @@ public static void lzkInsertSort(int[] arr) {
 System.out.print("插入排序后数组: ");
 printArray(testArr);
         // 示例调用：zsBubbleSort(testArr);
+        // 调用自己的排序算法：汤李-希尔排序
+        tlShellSort(testArr);
+        System.out.print("汤李-希尔排序算法排序结果: ");
+        printArray(testArr);
 
     }
 
