@@ -20,10 +20,26 @@ public static void lzkInsertSort(int[] arr) {
         arr[j + 1] = temp; // 插入到正确位置
     }
 }
-    // 示例：public static void zsBubbleSort(int[] arr){
-    //        冒泡排序代码写这里
-    //      }
-        // 希尔排序
+    // 冒泡排序
+    // 功能：对数字数组进行升序排序
+    // 参数：arr - 待排序的数字数组
+    // 返回值：无（直接修改原数组）
+    public static void xzyBubbleSort(int[] arr) {
+        int n = arr.length;
+        // 外层循环：控制排序轮数
+        for (int i = 0; i < n - 1; i++) {
+            // 内层循环：控制每轮比较次数
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // 交换相邻元素
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+    // 希尔排序
     // 功能：对数字数组进行升序排序
     // 参数：arr - 待排序的数字数组
     // 返回值：无（排序结果直接作用于原数组）
@@ -55,9 +71,13 @@ public static void lzkInsertSort(int[] arr) {
 
         // ========== 组员在这里调用自己写的排序函数 ==========
         lzkInsertSort(testArr);
-System.out.print("插入排序后数组: ");
-printArray(testArr);
+        System.out.print("插入排序后数组: ");
+        printArray(testArr);
         // 示例调用：zsBubbleSort(testArr);
+        // 调用自己的排序算法：肖尊毅-冒泡排序
+        xzyBubbleSort(testArr);
+        System.out.print("肖尊毅-冒泡排序算法排序结果: ");
+        printArray(testArr);
         // 调用自己的排序算法：汤李-希尔排序
         tlShellSort(testArr);
         System.out.print("汤李-希尔排序算法排序结果: ");
