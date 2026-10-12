@@ -138,19 +138,21 @@ public static void lzkInsertSort(int[] arr) {
         
         // ========== 组员在这里调用自己写的排序函数 ==========
         lzkInsertSort(testArr);
-        System.out.print("插入排序后数组: ");
+        System.out.print("刘泽凯-插入排序后数组: ");
         printArray(testArr);
-        // 示例调用：zsBubbleSort(testArr);
+
         ljxSelectSort(testArr);
-        System.out.print("选择排序后数组：");
-        printArray(testArr);        // 调用自己的排序算法：肖尊毅-冒泡排序
+        System.out.print("刘俊贤-选择排序后数组：");
+        printArray(testArr);      
+
         xzyBubbleSort(testArr);
         System.out.print("肖尊毅-冒泡排序算法排序结果: ");
         printArray(testArr);
-        // 调用自己的排序算法：汤李-希尔排序
+
         tlShellSort(testArr);
         System.out.print("汤李-希尔排序算法排序结果: ");
         printArray(testArr);
+        
         pqQuickSort(testArr);
         System.out.print("彭倩-快速排序算法排序结果: ");
         printArray(testArr);
